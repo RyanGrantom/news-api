@@ -9,7 +9,8 @@ paths:
     parameters: []
     get:
       summary: Get all News Sources
-      tags: []
+      tags:
+        - news-source
       responses:
         '200':
           description: Retrieved list of sources
@@ -87,6 +88,8 @@ paths:
           application/json:
             schema:
               $ref: ../models/news-source.yaml
+      tags:
+        - news-source
     delete:
       summary: Delete a news source
       operationId: delete-news-source
@@ -109,12 +112,39 @@ paths:
           application/json:
             schema:
               $ref: ../models/news-source.yaml
+  /news:
+    get:
+      summary: Get news from all sources
+      tags:
+        - news-article
+      responses: {}
+      operationId: get-news
+      description: Get news from all sources in database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/news-article.yaml
+      parameters:
+        - $ref: '#/components/parameters/limit'
+    parameters: []
+  '/news/{article-id}':
+    parameters:
+      - $ref: '#/components/parameters/article-id'
+    get:
+      summary: Get news article by id
+      tags:
+        - news-article
+      responses: {}
+      operationId: get-news-article-id
+      description: retrieve a single news article
   '/news/{date}':
     parameters:
       - $ref: '#/components/parameters/date'
     get:
       summary: Get News on Specific Date
-      tags: []
+      tags:
+        - news-article
       responses:
         '200':
           description: OK
@@ -128,25 +158,6 @@ paths:
         - schema:
             type: string
           in: query
-  '/news/{site}':
-    parameters:
-      - $ref: '#/components/parameters/site'
-    get:
-      summary: Get news from site
-      tags: []
-      responses: {}
-      operationId: get-news-site
-      description: gather news from a specific site
-  '/news/{site}/{category}':
-    parameters:
-      - $ref: '#/components/parameters/site'
-      - $ref: '#/components/parameters/category'
-    get:
-      summary: Get news from site by category
-      tags: []
-      responses: {}
-      operationId: get-news-site-category
-      description: gather news from a specific site and category
   '/news/{category}':
     parameters:
       - $ref: '#/components/parameters/category'
@@ -156,30 +167,29 @@ paths:
       responses:
         '200':
           description: OK
-  '/news/{article-id}':
+      tags:
+        - news-article
+  '/news/{site}':
     parameters:
-      - $ref: '#/components/parameters/article-id'
+      - $ref: '#/components/parameters/site'
     get:
-      summary: Get news article by id
-      tags: []
+      summary: Get news from site
+      tags:
+        - news-article
       responses: {}
-      operationId: get-news-article-id
-      description: retrieve a single news article
-  /news:
+      operationId: get-news-site
+      description: gather news from a specific site
+  '/news/{site}/{category}':
+    parameters:
+      - $ref: '#/components/parameters/site'
+      - $ref: '#/components/parameters/category'
     get:
-      summary: Get news from all sources
-      tags: []
+      summary: Get news from site by category
+      tags:
+        - news-article
       responses: {}
-      operationId: get-news
-      description: Get news from all sources in database
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/news-article.yaml
-      parameters:
-        - $ref: '#/components/parameters/limit'
-    parameters: []
+      operationId: get-news-site-category
+      description: gather news from a specific site and category
 components:
   schemas:
     news-article:
