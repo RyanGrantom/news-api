@@ -17,18 +17,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/news'
-              examples:
-                Get User Alice Smith:
-                  value:
-                    id: 142
-                    firstName: Alice
-                    lastName: Smith
-                    email: alice.smith@gmail.com
-                    dateOfBirth: '1997-10-31'
-                    emailVerified: true
-                    signUpDate: '2019-08-24'
-        '404':
-          description: User Not Found
+              examples: {}
+        '401':
+          description: Unauthorized to retrieve data
+          content:
+            application/json:
+              schema:
+                $ref: ''
       operationId: get-all-news
       description: Retrieves list of all news articles in database
       parameters:
