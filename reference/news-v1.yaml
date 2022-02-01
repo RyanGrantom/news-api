@@ -2,6 +2,11 @@ openapi: 3.1.0
 info:
   title: news-v1
   version: '1.0'
+  summary: Retrieves news articles from various news sources
+  description: The api retrieves the articles from the database and arranges them by date/site/category or specific article IDs
+  contact:
+    name: Ryan
+    email: grantom.ryan@gmail.com
 servers:
   - url: 'http://localhost:3000'
 paths:
@@ -90,6 +95,7 @@ paths:
               $ref: ../models/news-source.yaml
       tags:
         - news-source
+        - site
     delete:
       summary: Delete a news source
       operationId: delete-news-source
@@ -176,6 +182,7 @@ paths:
       summary: Get news from site
       tags:
         - news-article
+        - site
       responses: {}
       operationId: get-news-site
       description: gather news from a specific site
@@ -187,6 +194,7 @@ paths:
       summary: Get news from site by category
       tags:
         - news-article
+        - site
       responses: {}
       operationId: get-news-site-category
       description: gather news from a specific site and category
@@ -231,3 +239,4 @@ components:
       schema:
         type: string
       description: Date of which to retrieve news articles
+  responses: {}
