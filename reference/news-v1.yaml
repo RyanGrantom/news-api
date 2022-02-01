@@ -8,15 +8,15 @@ paths:
   /news:
     parameters: []
     get:
-      summary: Get User Info by User ID
+      summary: Get News from all Sources
       tags: []
       responses:
         '200':
-          description: User Found
+          description: Retrieved list of articles
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/news'
               examples:
                 Get User Alice Smith:
                   value:
@@ -29,8 +29,31 @@ paths:
                     signUpDate: '2019-08-24'
         '404':
           description: User Not Found
-      operationId: get-news
+      operationId: get-all-news
       description: Retrieves list of all news articles in database
+      parameters:
+        - $ref: '#/components/parameters/limit'
+    post:
+      summary: Add a News Source
+      operationId: add-news-site
+      responses:
+        '200':
+          description: OK
+      description: Add a site to the list of news sources
+    delete:
+      summary: Delete a News Source
+      operationId: delete-news-site
+      responses:
+        '200':
+          description: OK
+      description: Deletes a site from the list of sources
+    put:
+      summary: Update News Source
+      operationId: put-news
+      responses:
+        '200':
+          description: OK
+      description: Update a news source
   '/news/{date}':
     parameters:
       - schema:
@@ -75,7 +98,7 @@ paths:
       responses: {}
       operationId: get-news-site-category
       description: gather news from a specific site and category
-  'news/{category}':
+  '/news/{category}':
     post:
       summary: Create New User
       operationId: post-user
@@ -151,14 +174,24 @@ paths:
 components:
   schemas:
     news:
-      type: object
+      $ref: ../models/news.yaml
+      examples:
+        - article-id: 0
+          category: string
+          title: string
+          data: string
+          site-name: string
+          site-url: string
+          date-retrieved: '2019-08-24'
+          date-updated: '2019-08-24T14:15:22Z'
+      description: model used to collect news articles from different sites
   parameters:
     limit:
       name: limit
       in: query
-      required: false
       schema:
-        type: string
+        type: integer
+      description: Limit of articles returned
     category:
       name: category
       in: path
