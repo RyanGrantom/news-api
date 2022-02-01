@@ -8,7 +8,7 @@ info:
     name: Ryan
     email: grantom.ryan@gmail.com
 servers:
-  - url: 'http://8f84298404e9.ngrok.io'
+  - url: 'http://127.0.0.1:4010'
 paths:
   /news-sources:
     parameters: []
