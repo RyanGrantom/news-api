@@ -41,7 +41,6 @@ paths:
       description: Retrieves list of all news sources in database
       parameters:
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/Content-Type'
       x-internal: false
     post:
       summary: Add a News Source
@@ -68,6 +67,8 @@ paths:
             examples: {}
       tags:
         - news-source
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
   '/news-sources/{site}':
     parameters:
       - name: site
