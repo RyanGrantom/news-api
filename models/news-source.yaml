@@ -1,9 +1,14 @@
 title: news-source
 type: object
+description: news source model
 properties:
-  site-name:
+  id:
+    type: string
+  site:
     type: string
   category:
     type: array
-    items: {}
-description: news source model
+    items:
+      type: string
+required:
+  - site

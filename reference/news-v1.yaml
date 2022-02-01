@@ -5,18 +5,18 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /news:
+  /news-sources:
     parameters: []
     get:
-      summary: Get News from all Sources
+      summary: Get all News Sources
       tags: []
       responses:
         '200':
-          description: Retrieved list of articles
+          description: Retrieved list of sources
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/news-article'
+                $ref: ../models/news-source.yaml
               examples: {}
         '401':
           description: Unauthorized to retrieve data
@@ -24,20 +24,32 @@ paths:
             application/json:
               schema:
                 $ref: ../models/common-error.yaml
-      operationId: get-all-news
-      description: Retrieves list of all news articles in database
+        '':
+          content:
+            application/json:
+              schema:
+                $ref: ../models/news-source.yaml
+          description: Successfully retrieved all of the sources
+      operationId: get-news-sources
+      description: Retrieves list of all news sources in database
       parameters:
         - $ref: '#/components/parameters/limit'
     post:
       summary: Add a News Source
       operationId: add-news-site
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/news-source'
+                $ref: ../models/news-source.yaml
+        '401':
+          description: Unauthorized to add news source
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-error.yaml
       description: Add a site to the list of news sources
       requestBody:
         content:
@@ -45,33 +57,53 @@ paths:
             schema:
               $ref: ../models/news-source.yaml
             examples: {}
-    delete:
-      summary: Delete a News Source
-      operationId: delete-news-site
+  '/news-sources/{site}':
+    parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Name of site to retrieve news articles from
+    put:
+      summary: Update News Source
+      operationId: update-news-source
       responses:
         '200':
-          description: OK
+          description: Successfully updated.
           content:
             application/json:
               schema:
                 $ref: ../models/news-source.yaml
-      description: Deletes a site from the list of sources
+        '404':
+          description: News Source not found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-error.yaml
+      description: 'Update a news source categories available, or name'
       requestBody:
         content:
           application/json:
             schema:
               $ref: ../models/news-source.yaml
-    put:
-      summary: Update News Source
-      operationId: put-news
+    delete:
+      summary: Delete a news source
+      operationId: delete-news-source
       responses:
         '200':
-          description: OK
+          description: Successfully deleted source
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/news-source'
-      description: 'Update a news source categories available, or name'
+                $ref: ../models/news-source.yaml
+        '404':
+          description: Source not found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-error.yaml
+      description: Delete a news source or categories from the database
       requestBody:
         content:
           application/json:
@@ -83,9 +115,19 @@ paths:
     get:
       summary: Get News on Specific Date
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/news-article'
       operationId: get-news-on-date
       description: gather news from a specific date
+      parameters:
+        - schema:
+            type: string
+          in: query
   '/news/{site}':
     parameters:
       - $ref: '#/components/parameters/site'
@@ -123,6 +165,21 @@ paths:
       responses: {}
       operationId: get-news-article-id
       description: retrieve a single news article
+  /news:
+    get:
+      summary: Get news from all sources
+      tags: []
+      responses: {}
+      operationId: get-news
+      description: Get news from all sources in database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/news-article.yaml
+      parameters:
+        - $ref: '#/components/parameters/limit'
+    parameters: []
 components:
   schemas:
     news-article:

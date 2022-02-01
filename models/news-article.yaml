@@ -14,7 +14,7 @@ properties:
   data:
     type: string
     readOnly: true
-  site-name:
+  site:
     type: string
   site-url:
     type: string
