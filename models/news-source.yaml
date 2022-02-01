@@ -1,0 +1,9 @@
+title: news-source
+type: object
+properties:
+  site-name:
+    type: string
+  category:
+    type: array
+    items: {}
+description: news source model

@@ -1,0 +1,10 @@
+title: Common Error
+type: object
+x-tags:
+  - error
+properties:
+  code:
+    type: string
+  message:
+    type: string
+description: model to deliver error message

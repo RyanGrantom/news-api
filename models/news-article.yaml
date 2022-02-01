@@ -1,22 +1,28 @@
-title: news
+title: news-article
 type: object
 description: News article model
 properties:
   article-id:
     type: integer
+    readOnly: true
   category:
     type: string
+    readOnly: true
   title:
     type: string
+    readOnly: true
   data:
     type: string
+    readOnly: true
   site-name:
     type: string
   site-url:
     type: string
+    readOnly: true
   date-retrieved:
     type: string
     format: date
+    readOnly: true
   date-updated:
     type: string
     format: date-time
