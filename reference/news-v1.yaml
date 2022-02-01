@@ -57,10 +57,10 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get News on Specific Date
       tags: []
       responses: {}
-      operationId: get-news-date
+      operationId: get-news-on-date
       description: gather news from a specific date
   '/news/{site}':
     parameters:
@@ -70,7 +70,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get news from site
       tags: []
       responses: {}
       operationId: get-news-site
@@ -88,71 +88,24 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get news from site by category
       tags: []
       responses: {}
       operationId: get-news-site-category
       description: gather news from a specific site and category
   '/news/{category}':
-    post:
-      summary: Create New User
-      operationId: post-user
-      responses:
-        '200':
-          description: User Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-              examples:
-                New User Bob Fellow:
-                  value:
-                    id: 12
-                    firstName: Bob
-                    lastName: Fellow
-                    email: bob.fellow@gmail.com
-                    dateOfBirth: '1996-08-24'
-                    emailVerified: false
-                    createDate: '2020-11-18'
-        '400':
-          description: Missing Required Information
-        '409':
-          description: Email Already Taken
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                email:
-                  type: string
-                dateOfBirth:
-                  type: string
-                  format: date
-              required:
-                - firstName
-                - lastName
-                - email
-                - dateOfBirth
-            examples:
-              Create User Bob Fellow:
-                value:
-                  firstName: Bob
-                  lastName: Fellow
-                  email: bob.fellow@gmail.com
-                  dateOfBirth: '1996-08-24'
-        description: Post the necessary fields for the API to create a new user.
-      description: gather news in a specific category
     parameters:
       - schema:
           type: string
         name: category
         in: path
         required: true
+    get:
+      summary: Get news by category
+      operationId: get-news-category
+      responses:
+        '200':
+          description: OK
   '/news/{article-id}':
     parameters:
       - schema:
@@ -161,7 +114,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get news article by id
       tags: []
       responses: {}
       operationId: get-news-article-id
