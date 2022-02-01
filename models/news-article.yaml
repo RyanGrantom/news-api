@@ -16,6 +16,7 @@ properties:
     readOnly: true
   site:
     type: string
+    readOnly: true
   site-url:
     type: string
     readOnly: true
@@ -26,3 +27,4 @@ properties:
   date-updated:
     type: string
     format: date-time
+    readOnly: true
