@@ -252,7 +252,7 @@ components:
         type: string
       description: Date of which to retrieve news articles
     content-type:
-      name: content-type
+      name: Content-Type
       in: header
       required: false
       schema:
