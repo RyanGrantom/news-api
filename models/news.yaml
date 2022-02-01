@@ -1,0 +1,22 @@
+title: news
+type: object
+description: News article model
+properties:
+  article-id:
+    type: integer
+  category:
+    type: string
+  title:
+    type: string
+  data:
+    type: string
+  site-name:
+    type: string
+  site-url:
+    type: string
+  date-retrieved:
+    type: string
+    format: date
+  date-updated:
+    type: string
+    format: date-time
