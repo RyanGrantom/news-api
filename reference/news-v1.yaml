@@ -55,10 +55,13 @@ paths:
               examples:
                 Add a news source example response:
                   value:
-                    id: string
-                    site: string
+                    id: 1
+                    site: www.yahoo.com
                     category:
-                      - string
+                      - politics
+                      - sports
+                      - fun
+                      - idk
         '401':
           description: Unauthorized to add news source
           content:
