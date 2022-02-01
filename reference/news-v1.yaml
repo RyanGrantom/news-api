@@ -143,7 +143,7 @@ paths:
               $ref: ../models/news-article.yaml
       parameters:
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/content-type'
+        - $ref: '#/components/parameters/Content-Type'
     parameters: []
   '/news/{article-id}':
     parameters:
