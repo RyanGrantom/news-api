@@ -69,16 +69,15 @@ paths:
               schema:
                 $ref: ../models/common-error.yaml
       description: Add a site to the list of news sources
+      tags:
+        - news-source
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
       requestBody:
         content:
           application/json:
             schema:
               $ref: ../models/news-source.yaml
-            examples: {}
-      tags:
-        - news-source
-      parameters:
-        - $ref: '#/components/parameters/Content-Type'
   '/news-sources/{site}':
     parameters:
       - name: site
