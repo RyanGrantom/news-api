@@ -101,7 +101,8 @@ paths:
       tags:
         - news-source
         - site
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
     delete:
       summary: Delete a news source
       operationId: delete-news-source
@@ -219,7 +220,7 @@ components:
       in: query
       schema:
         type: integer
-      description: Limit of news articles returned
+      description: Number of news articles returned
     category:
       name: category
       in: path
