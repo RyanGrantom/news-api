@@ -24,6 +24,10 @@ paths:
               schema:
                 $ref: ../models/news-source.yaml
               examples: {}
+          headers:
+            header-0:
+              schema:
+                type: string
         '401':
           description: Unauthorized to retrieve data
           content:
@@ -40,6 +44,7 @@ paths:
       description: Retrieves list of all news sources in database
       parameters:
         - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/content-type'
     post:
       summary: Add a News Source
       operationId: add-news-site
@@ -98,6 +103,8 @@ paths:
       tags:
         - news-source
         - site
+      parameters:
+        - $ref: '#/components/parameters/content-type'
     delete:
       summary: Delete a news source
       operationId: delete-news-source
@@ -137,6 +144,7 @@ paths:
               $ref: ../models/news-article.yaml
       parameters:
         - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/content-type'
     parameters: []
   '/news/{article-id}':
     parameters:
@@ -243,4 +251,11 @@ components:
       schema:
         type: string
       description: Date of which to retrieve news articles
+    content-type:
+      name: content-type
+      in: header
+      required: false
+      schema:
+        type: string
+      description: application/json
   responses: {}
