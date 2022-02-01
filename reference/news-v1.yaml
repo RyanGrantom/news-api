@@ -63,6 +63,8 @@ paths:
             schema:
               $ref: ../models/news-source.yaml
             examples: {}
+      tags:
+        - news-source
   '/news-sources/{site}':
     parameters:
       - name: site
@@ -118,6 +120,8 @@ paths:
           application/json:
             schema:
               $ref: ../models/news-source.yaml
+      tags:
+        - news-source
   /news:
     get:
       summary: Get news from all sources
