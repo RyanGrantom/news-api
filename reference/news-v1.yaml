@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: news-v1
+  title: Stoplight news-v1
   version: '1.0'
   summary: Retrieves news articles from various news sources
   description: The api retrieves the articles from the database and arranges them by date/site/category or specific article IDs
