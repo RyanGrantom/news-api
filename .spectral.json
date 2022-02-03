@@ -18,7 +18,8 @@
         "functionOptions": {
           "match": "Stoplight"
         }
-      }
+      },
+      "severity": "warn"
     }
   }
 }
