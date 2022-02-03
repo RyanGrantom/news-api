@@ -102,15 +102,9 @@ paths:
             application/json:
               schema:
                 $ref: ../models/common-error.yaml
-      description: |-
-        Update a news source categories available, or name
-
-
-        # Best Practices Demo
-
-        This page contains general pieces of advice which do not strictly belong to the [Specification Explained](specification.md) chapter because they are not directly tied to the OpenAPI Specification.
-
-        However, they greatly simplify creating and maintaining OpenAPI documents, so they are worth keeping in mind.
+      description: |
+        # Update a news source categories available, or name
+         *Markdown formatting works here*
       requestBody:
         content:
           application/json:
