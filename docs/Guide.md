@@ -1,7 +1,3 @@
----
-tags: [Guides]
----
-
 # Best Practices Demo
 
 This page contains general pieces of advice which do not strictly belong to the [Specification Explained](specification.md) chapter because they are not directly tied to the OpenAPI Specification.
@@ -96,3 +92,7 @@ There's quite a bit of literature about how to organize your API more efficientl
 For example:
 
 - The [API Stylebook](http://apistylebook.com/design/guidelines/) contains internal API Design Guidelines shared with the community by some well known companies and government agencies.
+
+---
+tags: [Guides]
+---
