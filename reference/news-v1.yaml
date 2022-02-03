@@ -70,7 +70,7 @@ paths:
             application/json:
               schema:
                 $ref: ../models/common-error.yaml
-      description: Add a site to the list of news sources
+      description: '#Add a site to the list of news sources'
       tags:
         - news-source
       parameters:
@@ -222,6 +222,12 @@ paths:
       responses: {}
       operationId: get-news-site-category
       description: gather news from a specific site and category
+  /change:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-change
 components:
   schemas:
     news-article:
