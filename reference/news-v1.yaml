@@ -222,12 +222,6 @@ paths:
       responses: {}
       operationId: get-news-site-category
       description: gather news from a specific site and category
-  /Changes:
-    get:
-      summary: Your GET endpoint
-      tags: []
-      responses: {}
-      operationId: get-Changes
 components:
   schemas:
     news-article:
