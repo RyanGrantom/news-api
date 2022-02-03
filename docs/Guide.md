@@ -8,7 +8,7 @@ We automatically LINT your APIs.
 
 Here are some more assets
 
-- <https://github.com/openapi-contrib/style-guides>
+- <https://github.com/RyanGrantom/news-api>
 - <https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules>
 - <https://meta.stoplight.io/docs/spectral/ZG9jOjI1MTg1-spectral-cli>
 
