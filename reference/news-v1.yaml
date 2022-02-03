@@ -42,6 +42,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/limit'
       x-internal: false
+      security:
+        - API Key - 1: []
     post:
       summary: Add a News Source
       operationId: add-news-site
@@ -268,7 +270,14 @@ components:
       schema:
         type: string
       description: application/json
-  responses: {}
+  responses:
+    '404':
+      description: Content Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../models/common-error.yaml
+      headers: {}
   securitySchemes:
     API Key - 1:
       name: API Key
