@@ -1,3 +1,4 @@
+![Screen Shot 2022-03-17 at 3.27.44 PM.png](https://stoplight.io/api/v1/projects/cHJqOjExMTU4MQ/images/Rft3FGRZpzM)
 # Best Practices Demo
 
 This page contains general pieces of advice which do not strictly belong to the [Specification Explained](specification.md) chapter because they are not directly tied to the OpenAPI Specification.

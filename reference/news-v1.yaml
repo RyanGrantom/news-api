@@ -9,6 +9,7 @@ info:
     email: grantom.ryan@gmail.com
 servers:
   - url: 'http://127.0.0.1:4010'
+    description: Hosted Server
 paths:
   /news-sources:
     parameters: []
@@ -170,24 +171,17 @@ paths:
       description: retrieve a single news article
   '/news/{date}':
     parameters:
+      - schema:
+          type: string
+        name: date
+        in: path
+        required: true
       - $ref: '#/components/parameters/date'
     get:
-      summary: Get News on Specific Date
-      tags:
-        - news-article
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/news-article'
-      operationId: get-news-on-date
-      description: gather news from a specific date
-      parameters:
-        - schema:
-            type: string
-          in: query
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-news-date
   '/news/{category}':
     parameters:
       - $ref: '#/components/parameters/category'
