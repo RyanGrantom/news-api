@@ -42,6 +42,9 @@ paths:
       description: Retrieves list of all news sources in database
       parameters:
         - $ref: '#/components/parameters/limit'
+        - schema:
+            type: string
+          in: header
       x-internal: false
       security:
         - API Key - 1: []
@@ -76,9 +79,7 @@ paths:
         - news-source
       parameters:
         - $ref: '#/components/parameters/Content-Type'
-        - schema:
-            type: string
-          in: header
+        - $ref: '#/components/parameters/dynamic'
       requestBody:
         content:
           application/json:
