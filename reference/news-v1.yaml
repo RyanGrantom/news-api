@@ -76,6 +76,9 @@ paths:
         - news-source
       parameters:
         - $ref: '#/components/parameters/Content-Type'
+        - schema:
+            type: string
+          in: header
       requestBody:
         content:
           application/json:
@@ -118,6 +121,7 @@ paths:
         - site
       parameters:
         - $ref: '#/components/parameters/Content-Type'
+        - $ref: '#/components/parameters/dynamic'
     delete:
       summary: Delete a news source
       operationId: delete-news-source
@@ -269,7 +273,16 @@ components:
       required: false
       schema:
         type: string
+        default: application/json
       description: application/json
+    dynamic:
+      name: dynamic
+      in: header
+      required: false
+      schema:
+        type: string
+        default: 'true'
+      description: true/false
   responses:
     '404':
       description: Content Not Found
